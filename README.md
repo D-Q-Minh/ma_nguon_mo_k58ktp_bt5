@@ -298,3 +298,6 @@ http {
 ###### kiểm tra, phần biểu đồ đã hoạt động:
 <img width="1202" height="680" alt="image" src="https://github.com/user-attachments/assets/32d616e0-989d-4d79-aebe-a9bb8dd970fb" />
 
+###### bot đã alert
+<img width="590" height="451" alt="d6ea3cdf9e1d1f43460c" src="https://github.com/user-attachments/assets/60fcfa0d-9971-47bf-9483-6f15850212d3" />
+
