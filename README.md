@@ -42,7 +42,7 @@ weather_monitor/
     ├── app.py
     └── requirements.txt
 ```
-###### file docker_compose.yml
+###### file docker-compose.yml
 ```
 version: '3.8'
 
@@ -165,4 +165,85 @@ mysql-connector-python
 ###### file flask_api/file dockerfile (Để Docker Compose build được service flask_api)
 <img width="343" height="155" alt="image" src="https://github.com/user-attachments/assets/1f43864d-dc1e-4509-8127-b1bdc7bbde87" />
 
-###### 
+###### file nginx/nginx.conf
+```
+events {}
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    server {
+        listen 80;
+        
+        # Thư mục chứa code HTML/JS/CSS Frontend
+        location / {
+            root /usr/share/nginx/html;
+            index index.html;
+        }
+
+        # Reverse proxy qua Flask API để tránh lộ port 5000 ra ngoài
+        location /api/ {
+            proxy_pass http://weather_flask_api:5000/api/;
+        }
+    }
+}
+```
+<img width="546" height="357" alt="image" src="https://github.com/user-attachments/assets/d0bb94ef-eb8d-490a-94f5-73382c68e071" />
+
+###### file nginx/html/index.html
+```
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hệ Thống Giám Sát Thời Tiết Realtime</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; text-align: center; padding: 20px; }
+        .container { display: flex; justify-content: space-around; margin-bottom: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 40%; }
+        .value { font-size: 2.5rem; font-weight: bold; color: #2c3e50; }
+        iframe { width: 90%; height: 450px; border: 1px solid #ccc; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>THỜI TIẾT REALTIME & LỊCH SỬ</h1>
+    <p>Tự động cập nhật dữ liệu mỗi 5 giây qua AJAX gọi Flask API</p>
+
+    <div class="container">
+        <div class="card">
+            <h3>Nhiệt Độ Hiện Tại</h3>
+            <div id="temp" class="value">-- °C</div>
+        </div>
+        <div class="card">
+            <h3>Độ Ẩm Hiện Tại</h3>
+            <div id="humidity" class="value">-- %</div>
+        </div>
+    </div>
+
+    <h2>Biểu Đồ Lịch Sử (Grafana)</h2>
+    <iframe src="http://localhost:3000/d-solo/weather_dashboard/weather-report?orgId=1&panelId=1&refresh=5s" frameborder="0"></iframe>
+
+    <script>
+        // Hàm dùng AJAX (Fetch API) lấy dữ liệu liên tục từ Flask
+        async function fetchWeatherData() {
+            try {
+                const response = await fetch('/api/weather/live');
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('temp').innerText = data.temperature + " °C";
+                    document.getElementById('humidity').innerText = data.humidity + " %";
+                }
+            } catch (error) {
+                console.error("Lỗi lấy dữ liệu:", error);
+            }
+        }
+
+        // Tự động quét lại sau mỗi 5 giây (Realtime)
+        setInterval(fetchWeatherData, 5000);
+        fetchWeatherData(); // Chạy lần đầu ngay khi load trang
+    </script>
+</body>
+</html>
+```
+<img width="475" height="218" alt="image" src="https://github.com/user-attachments/assets/e5b2196c-12e9-473f-9cbb-7b5debf102f4" />
