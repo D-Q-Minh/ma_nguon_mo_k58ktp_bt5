@@ -301,3 +301,63 @@ http {
 ###### bot đã alert
 <img width="590" height="451" alt="d6ea3cdf9e1d1f43460c" src="https://github.com/user-attachments/assets/60fcfa0d-9971-47bf-9483-6f15850212d3" />
 
+### 4. đóng gói các container, khôi phục các container đã xóa
+- xuất tất cả các container ra file nén.
+- xoá mọi container đang chạy
+- load lại các container  từ file nén để khôi phục các container đã xoá
+
+#### 4.1. đóng gói hệ thống
+###### chạy lệnh (chạy trên cmd, file weather_system_final.tar sẽ lưu vào c:\users\<tên máy tính>
+```
+# 1. Lưu lại trạng thái cấu hình hiện tại của các container thành Image local
+docker commit weather_nodered weather_nodered_backup
+docker commit weather_mariadb weather_mariadb_backup
+docker commit weather_influxdb weather_influxdb_backup
+docker commit weather_grafana weather_grafana_backup
+docker commit weather_nginx weather_nginx_backup
+
+# 2. Đóng gói tất cả các image backup này vào DUY NHẤT một file nén .tar
+docker save -o weather_system_final.tar weather_nodered_backup weather_mariadb_backup weather_influxdb_backup weather_grafana_backup weather_nginx_backup
+```
+<img width="973" height="300" alt="image" src="https://github.com/user-attachments/assets/2de89b82-5a88-47a0-aed1-2118fd1ad0e0" />
+
+###### xoá mọi container đang chạy
+docker compose down
+<img width="480" height="182" alt="image" src="https://github.com/user-attachments/assets/908aa975-edaa-47cd-b8c5-6e0f005b48e9" />
+
+<img width="685" height="318" alt="image" src="https://github.com/user-attachments/assets/f2aeb4ff-be3a-40f4-8584-5b8afd97499b" />
+
+###### 4.2. Nạp file nén và Khôi phục hệ thống
+###### load lại các container từ file nén để khôi phục các container đã xoá:
+###### cấu hình lại file docker-compose.yml:
+###### đổi tên các image
+<img width="332" height="34" alt="image" src="https://github.com/user-attachments/assets/f74cae72-ce83-43e5-ab59-62e535302324" />
+
+<img width="345" height="36" alt="image" src="https://github.com/user-attachments/assets/66ccd02b-c652-41e9-8b6a-b8eea8647f7b" />
+
+<img width="314" height="35" alt="image" src="https://github.com/user-attachments/assets/0d1d9bb0-6746-46e1-aed2-621d1c843049" />
+
+<img width="342" height="36" alt="image" src="https://github.com/user-attachments/assets/097ac19f-079a-4d50-a0f0-fd31fdc764b0" />
+
+<img width="345" height="44" alt="image" src="https://github.com/user-attachments/assets/4373a1f5-92bc-477c-a5d6-d077503d9523" />
+
+###### Nạp dữ liệu từ file nén vào Docker:
+###### (file weather_system_final.tar tại folder container)
+<img width="327" height="232" alt="image" src="https://github.com/user-attachments/assets/120773b4-9cd4-4b27-b5d3-69ba39bed522" />
+
+###### nạp dữ liệu:
+<img width="648" height="106" alt="image" src="https://github.com/user-attachments/assets/a7c185ed-b1aa-4ece-9e6c-5f748af93aaa" />
+
+###### khởi chạy lại hệ thống:
+<img width="649" height="183" alt="image" src="https://github.com/user-attachments/assets/9e8bc856-e0fa-4144-a77d-029e1799ed91" />
+
+<img width="425" height="274" alt="image" src="https://github.com/user-attachments/assets/0e38622d-ab10-44b6-a78b-89fa69e54c2c" />
+
+###### kiểm tra:
+<img width="816" height="504" alt="image" src="https://github.com/user-attachments/assets/752cb18d-4947-4f30-827b-731b4c8e405f" />
+
+<img width="878" height="370" alt="image" src="https://github.com/user-attachments/assets/99944b36-c45b-4153-bd63-613121bccbf6" />
+
+<img width="1169" height="680" alt="image" src="https://github.com/user-attachments/assets/04324404-cb2e-4968-a9f1-676921b24c8f" />
+
+###### => mọi cấu hình đều đầy đủ
