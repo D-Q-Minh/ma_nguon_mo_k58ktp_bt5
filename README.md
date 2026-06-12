@@ -247,3 +247,14 @@ http {
 </html>
 ```
 <img width="475" height="218" alt="image" src="https://github.com/user-attachments/assets/e5b2196c-12e9-473f-9cbb-7b5debf102f4" />
+
+##### chạy docker compose up -d
+<img width="230" height="275" alt="image" src="https://github.com/user-attachments/assets/3d0536ba-34d7-473e-9dc4-e8a5a466184c" />
+
+### 2. Cấu hình Node-RED
+#### 2.1. Cấu hình bot telegram
+###### Tạo bot mới bằng @BotFather
+<img width="643" height="66" alt="image" src="https://github.com/user-attachments/assets/207e7574-12bb-439e-a9a3-940e9ebbb498" />
+###### tạo group, thêm bot vào
+<img width="242" height="67" alt="image" src="https://github.com/user-attachments/assets/344a4122-bccb-455b-af86-61143e09c9e6" />
+<img width="364" height="76" alt="image" src="https://github.com/user-attachments/assets/84535b87-b275-4684-91b7-95d10623ee88" />
