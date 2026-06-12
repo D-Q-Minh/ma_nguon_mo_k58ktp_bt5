@@ -264,3 +264,11 @@ http {
 ###### truy cập: https://api.telegram.org/bot<TOKEN botfather cung cấp>/getUpdates
 <img width="513" height="313" alt="image" src="https://github.com/user-attachments/assets/4532839a-5a49-4d00-9428-1ab356bf18b8" />
 
+#### 2.2. node-red
+###### node mysql: cấu hình database
+<img width="505" height="392" alt="image" src="https://github.com/user-attachments/assets/604802db-13bd-4831-bf35-a2ca8997133d" />
+###### tạo bảng dữ liệu:
+<img width="809" height="314" alt="image" src="https://github.com/user-attachments/assets/41e3fda8-e5f0-453b-8603-c682759a7f4d" />
+###### node-red đã thông:
+<img width="832" height="193" alt="image" src="https://github.com/user-attachments/assets/e7150c2f-9852-4218-a8c0-70e7dbd829fc" />
+
