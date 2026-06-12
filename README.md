@@ -25,8 +25,7 @@
        nội dung alert: tường minh, có value gây alert
 
      xuất tất cả các container ra file nén.
-
-### 1. Các file cấu hình:
-
      xoá mọi container đang chạy
      load lại các container  từ file nén để khôi phục các container đã xoá
+
+### 1. Các file cấu hình:
