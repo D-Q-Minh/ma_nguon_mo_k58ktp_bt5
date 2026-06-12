@@ -267,8 +267,34 @@ http {
 #### 2.2. node-red
 ###### node mysql: cấu hình database
 <img width="505" height="392" alt="image" src="https://github.com/user-attachments/assets/604802db-13bd-4831-bf35-a2ca8997133d" />
+
 ###### tạo bảng dữ liệu:
 <img width="809" height="314" alt="image" src="https://github.com/user-attachments/assets/41e3fda8-e5f0-453b-8603-c682759a7f4d" />
+
 ###### node-red đã thông:
 <img width="832" height="193" alt="image" src="https://github.com/user-attachments/assets/e7150c2f-9852-4218-a8c0-70e7dbd829fc" />
+
+### 3. cấu hình grafana
+###### đăng nhập
+###### phần connection/data sources
+<img width="1141" height="261" alt="image" src="https://github.com/user-attachments/assets/2e550e33-31e0-40c6-8164-6a8d58dff31e" />
+
+###### chọn Add data source, InfluxDB, cấu hình, bấm save & test
+<img width="396" height="496" alt="image" src="https://github.com/user-attachments/assets/ba33be8c-0273-448a-8f90-5d8134f8b371" />
+<img width="516" height="54" alt="image" src="https://github.com/user-attachments/assets/a780e8ff-73ee-495b-90a0-0f6b63e3bf89" />
+<img width="775" height="105" alt="image" src="https://github.com/user-attachments/assets/bc5774a3-a7e8-4b45-ab15-38d6c03d82fa" />
+
+###### Dashboard và Biểu đồ lịch sử:
+###### phần Dashboard, chọn new Dashboard, add visualization, 
+###### cấu hình:
+<img width="1044" height="549" alt="image" src="https://github.com/user-attachments/assets/a603f8bb-2721-4e9e-a04f-e5db9c1954de" />
+
+###### chọn share embed, copy link src="..." trong mã <iframe>:
+<img width="772" height="286" alt="image" src="https://github.com/user-attachments/assets/e9c3ff82-1853-4b96-8775-bd990acc2816" />
+
+###### trong file index.html, tại phần <iframe>, thay src="..." ở trên vào
+<img width="1167" height="55" alt="image" src="https://github.com/user-attachments/assets/cb9ddc01-e4bf-412e-ad3e-7985d5c4760a" />
+
+###### kiểm tra, phần biểu đồ đã hoạt động:
+<img width="1202" height="680" alt="image" src="https://github.com/user-attachments/assets/32d616e0-989d-4d79-aebe-a9bb8dd970fb" />
 
