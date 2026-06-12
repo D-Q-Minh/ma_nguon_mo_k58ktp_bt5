@@ -255,6 +255,12 @@ http {
 #### 2.1. Cấu hình bot telegram
 ###### Tạo bot mới bằng @BotFather
 <img width="643" height="66" alt="image" src="https://github.com/user-attachments/assets/207e7574-12bb-439e-a9a3-940e9ebbb498" />
-###### tạo group, thêm bot vào
+
+###### tạo group, thêm bot vào (cấp quyền admin để bot gửi alert)
 <img width="242" height="67" alt="image" src="https://github.com/user-attachments/assets/344a4122-bccb-455b-af86-61143e09c9e6" />
 <img width="364" height="76" alt="image" src="https://github.com/user-attachments/assets/84535b87-b275-4684-91b7-95d10623ee88" />
+
+###### lấy id của group
+###### truy cập: https://api.telegram.org/bot<TOKEN botfather cung cấp>/getUpdates
+<img width="513" height="313" alt="image" src="https://github.com/user-attachments/assets/4532839a-5a49-4d00-9428-1ab356bf18b8" />
+
