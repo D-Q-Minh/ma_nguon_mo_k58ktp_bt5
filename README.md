@@ -360,4 +360,4 @@ docker compose down
 
 <img width="1169" height="680" alt="image" src="https://github.com/user-attachments/assets/04324404-cb2e-4968-a9f1-676921b24c8f" />
 
-###### => mọi cấu hình đều đầy đủ
+### => mọi cấu hình đều đầy đủ
