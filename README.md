@@ -158,6 +158,41 @@ mysql-connector-python
 
 ###### file flask_api/app.py
 ```
+from flask import Flask, jsonify
+from flask_cors import CORS
+import mysql.connector
+
+app = Flask(__name__)
+CORS(app)  # Cho phép Front-end gọi API không bị lỗi CORS
+
+def get_db_connection():
+    return mysql.connector.connect(
+        host="weather_mariadb", # Tên service trong docker-compose
+        user="root",
+        password="rootpassword",
+        database="weather_db"
+    )
+
+@app.route('/api/weather/live', methods=['GET'])
+def get_live_weather():
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        # Lấy bản ghi mới nhất dựa trên thời gian cập nhật
+        cursor.execute("SELECT city, temperature, humidity, updated_at FROM weather_now ORDER BY updated_at DESC LIMIT 1")
+        result = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        
+        if result:
+            return jsonify(result), 200
+        else:
+            return jsonify({"error": "No data found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
 
 ```
 <img width="538" height="295" alt="image" src="https://github.com/user-attachments/assets/9a6d4523-a1ce-4e47-a9da-f84b1daab28f" />
